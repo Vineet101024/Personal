@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vineet Singh Chauhan - Portfolio</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #3b82f6;
+            --bg-color: #f8fafc;
+            --text-color: #334155;
+            --card-bg: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { font-size: 1.2rem; opacity: 0.9; margin-top: 0.5rem; }
+        .container {
+            max-width: 900px;
+            margin: -2rem auto 3rem auto;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        h2 { color: var(--primary); border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-top: 2rem; }
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--secondary);
+        }
+        .milestone {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .milestone h3 { margin: 0 0 0.3rem 0; color: #1e293b; font-size: 1.1rem; }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .tag {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Vineet Singh Chauhan</h1>
+        <p>Product Manager | Data Scientist | Gen AI Explorer at D. E. Shaw</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>About Me</h2>
+            <p>Born in a small town in Chambal, my journey spans from intensive JEE preparation in Kota to engineering at IIT Jodhpur, management at IIM Calcutta, and tackling cutting-edge Gen AI problems at D.E. Shaw.</p>
+        </section>
+
+        <section>
+            <h2>Career & Life Timeline</h2>
+            <div class="timeline">
+                <div class="milestone">
+                    <h3>Chambal & Kota</h3>
+                    <p>Basic schooling in hometown followed by 11th-12th standard in Kota for JEE preparation.</p>
+                </div>
+                <div class="milestone">
+                    <h3>IIT Jodhpur</h3>
+                    <p>Cleared JEE, graduated with college highlights including BAJA SAE, Festival Coordinator, Volleyball team, and a 3 Lakh Scholarship.</p>
+                </div>
+                <div class="milestone">
+                    <h3>Corporate & Product Journey</h3>
+                    <p>Interned at Larsen & Toubro (L&T). Built product career at Snapdeal & Career Launcher (CL). Honored as LinkedIn Top PM Voice and Consistent Performer of the Quarter.</p>
+                </div>
+                <div class="milestone">
+                    <h3>UPSC & IIM Calcutta (2021 - 2025)</h3>
+                    <p>Dedicated a year to UPSC preparation. Completed MBA from IIM Calcutta (2023-2025) serving as General Secretary of the PGDBA Batch.</p>
+                </div>
+                <div class="milestone">
+                    <h3>Current: D. E. Shaw</h3>
+                    <p>Successfully transitioned to Data Science, solving complex Generative AI problems.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Interests & Passions</h2>
+            <div class="tags">
+                <span class="tag">Economics</span>
+                <span class="tag">Finance</span>
+                <span class="tag">Astrology</span>
+                <span class="tag">Pattern Recognition</span>
+                <span class="tag">Travelling</span>
+                <span class="tag">Singing & Music</span>
+                <span class="tag">Cooking</span>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Vineet Singh Chauhan. Built for GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
