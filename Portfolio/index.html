@@ -4,128 +4,722 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vineet Singh Chauhan - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e3a8a;
-            --secondary: #3b82f6;
-            --bg-color: #f8fafc;
-            --text-color: #334155;
-            --card-bg: #ffffff;
+            --bg-color: #0b0f19;
+            --bg-surface: rgba(30, 41, 59, 0.55);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #06b6d4;
+            --gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
         }
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            text-align: center;
-            padding: 4rem 2rem;
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 30%, rgba(59, 130, 246, 0.12), transparent 25%),
+                radial-gradient(circle at 85% 70%, rgba(6, 182, 212, 0.12), transparent 25%);
+            background-attachment: fixed;
         }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { font-size: 1.2rem; opacity: 0.9; margin-top: 0.5rem; }
-        .container {
-            max-width: 900px;
-            margin: -2rem auto 3rem auto;
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-        h2 { color: var(--primary); border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-top: 2rem; }
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-            margin: 1.5rem 0;
-            border-left: 3px solid var(--secondary);
-        }
-        .milestone {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        .milestone h3 { margin: 0 0 0.3rem 0; color: #1e293b; font-size: 1.1rem; }
-        .tags {
+
+        /* Fixed Navigation Header */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
             display: flex;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-tabs {
+            display: flex;
             gap: 0.5rem;
+            list-style: none;
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            padding: 0.5rem 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .nav-tab:hover, .nav-tab.active {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-tab.active {
+            border-bottom: 2px solid var(--accent-secondary);
+        }
+
+        /* Container & Tab Logic */
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto 5rem;
+            padding: 0 1.5rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards & Styling */
+        .card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h2::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gradient);
+        }
+
+        p { color: var(--text-secondary); font-size: 1.05rem; }
+
+        /* Hero Header */
+        .hero-card {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .profile-frame {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            padding: 4px;
+            background: var(--gradient);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background: #1e293b;
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text p.subtitle {
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Key Achievements List */
+        .achievements-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .achievements-list li {
+            position: relative;
+            padding-left: 1.75rem;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .achievements-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--accent-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Skills Pill Cloud */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
             margin-top: 1rem;
         }
-        .tag {
-            background: #e0f2fe;
-            color: #0369a1;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
+
+        .skill-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            color: var(--accent-secondary);
+            margin-bottom: 0.4rem;
             font-weight: 600;
         }
+
+        .skill-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Vertical Timeline Layout */
+        .vertical-timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        .vertical-timeline::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            bottom: 5px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-secondary), rgba(59, 130, 246, 0.2));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.45rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--accent-secondary);
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        .timeline-item .node-date {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-item .node-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footprint Grid */
+        .footprint-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .footprint-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            transition: all 0.3s ease;
+        }
+
+        .footprint-card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .footprint-card .city-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-secondary);
+        }
+
+        .footprint-card .city-role {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Narrative Story Layout */
+        .story-content p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .story-content p strong {
+            color: var(--text-primary);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Quotes Styling */
+        .quote-card {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 3px solid var(--accent-secondary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-card p {
+            font-style: italic;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-author {
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
             padding: 2rem;
-            color: #64748b;
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero-card { flex-direction: column; text-align: center; }
+            h2 { justify-content: center; }
+            h2::before { display: none; }
+            nav { flex-direction: column; gap: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Vineet Singh Chauhan</h1>
-        <p>Product Manager | Data Scientist | Gen AI Explorer at D. E. Shaw</p>
-    </header>
+    <nav>
+        <div class="nav-logo">Vineet Singh Chauhan</div>
+        <ul class="nav-tabs">
+            <li class="nav-tab active" onclick="switchTab('home')">Home</li>
+            <li class="nav-tab" onclick="switchTab('early-life')">Early Life</li>
+            <li class="nav-tab" onclick="switchTab('projects')">Projects</li>
+            <li class="nav-tab" onclick="switchTab('places')">Places</li>
+            <li class="nav-tab" onclick="switchTab('hobbies')">Hobbies</li>
+            <li class="nav-tab" onclick="switchTab('quotes')">Favorite Quotes</li>
+        </ul>
+    </nav>
 
     <div class="container">
-        <section>
-            <h2>About Me</h2>
-            <p>Born in a small town in Chambal, my journey spans from intensive JEE preparation in Kota to engineering at IIT Jodhpur, management at IIM Calcutta, and tackling cutting-edge Gen AI problems at D.E. Shaw.</p>
-        </section>
 
-        <section>
-            <h2>Career & Life Timeline</h2>
-            <div class="timeline">
-                <div class="milestone">
-                    <h3>Chambal & Kota</h3>
-                    <p>Basic schooling in hometown followed by 11th-12th standard in Kota for JEE preparation.</p>
+        <!-- TAB 1: HOME -->
+        <div id="home" class="tab-content active">
+            <!-- Hero Card -->
+            <div class="card hero-card">
+                <div class="profile-frame">
+                    <img src="profile.jpg" alt="Vineet Singh Chauhan" class="profile-img" onerror="this.src='https://via.placeholder.com/160/1e293b/f8fafc?text=Vineet'">
                 </div>
-                <div class="milestone">
-                    <h3>IIT Jodhpur</h3>
-                    <p>Cleared JEE, graduated with college highlights including BAJA SAE, Festival Coordinator, Volleyball team, and a 3 Lakh Scholarship.</p>
-                </div>
-                <div class="milestone">
-                    <h3>Corporate & Product Journey</h3>
-                    <p>Interned at Larsen & Toubro (L&T). Built product career at Snapdeal & Career Launcher (CL). Honored as LinkedIn Top PM Voice and Consistent Performer of the Quarter.</p>
-                </div>
-                <div class="milestone">
-                    <h3>UPSC & IIM Calcutta (2021 - 2025)</h3>
-                    <p>Dedicated a year to UPSC preparation. Completed MBA from IIM Calcutta (2023-2025) serving as General Secretary of the PGDBA Batch.</p>
-                </div>
-                <div class="milestone">
-                    <h3>Current: D. E. Shaw</h3>
-                    <p>Successfully transitioned to Data Science, solving complex Generative AI problems.</p>
+                <div class="hero-text">
+                    <h1>Vineet Singh Chauhan</h1>
+                    <p class="subtitle">Product Manager &bull; Data Scientist &bull; Agentic AI Specialist</p>
+                    <p>Building at the intersection of business strategy and Generative AI at a premier global Hedge Fund. IIT Jodhpur & IIM Calcutta alum passionate about pattern recognition, systems thinking, and complex problem-solving.</p>
                 </div>
             </div>
-        </section>
 
-        <section>
-            <h2>Interests & Passions</h2>
-            <div class="tags">
-                <span class="tag">Economics</span>
-                <span class="tag">Finance</span>
-                <span class="tag">Astrology</span>
-                <span class="tag">Pattern Recognition</span>
-                <span class="tag">Travelling</span>
-                <span class="tag">Singing & Music</span>
-                <span class="tag">Cooking</span>
+            <!-- Key Achievements -->
+            <div class="card">
+                <h2>Key Achievements</h2>
+                <ul class="achievements-list">
+                    <li>LinkedIn Top Product Management Voice</li>
+                    <li>Selected by IIM Calcutta for PGDBA</li>
+                    <li>General Secretary - PGDBA Batch at IIM Calcutta</li>
+                    <li>Awarded 3 Lakh Scholarship by IIT Jodhpur</li>
+                    <li>Selected in JEE Advanced '15</li>
+                    <li>CBSE District Topper</li>
+                </ul>
             </div>
-        </section>
+
+            <!-- Timeline -->
+            <div class="card">
+                <h2>The Journey So Far</h2>
+                <div class="vertical-timeline">
+                    <div class="timeline-item">
+                        <div class="node-date">Present</div>
+                        <div class="node-title">Data Science / GenAI Specialist at Hedge Fund</div>
+                        <p>Hyderabad / Gurugram &mdash; Focusing on Data Science & Generative AI, solving high-impact quantitative and product challenges.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="node-date">Academic Milestone</div>
+                        <div class="node-title">IIM Calcutta</div>
+                        <p>Completed MBA/PGDBA; served as elected General Secretary of the PGDBA Batch.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="node-date">Product Leadership</div>
+                        <div class="node-title">Growth Product Manager at Leading Indian E-commerce</div>
+                        <p>Gurugram &mdash; Drove core user growth loops, funnel conversion, and digital product strategy.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="node-date">Sabbatical</div>
+                        <div class="node-title">UPSC Civil Services Preparation</div>
+                        <p>Dedicated focused time to deep macroeconomic, policy, and critical analysis preparation.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="node-date">Industry Training</div>
+                        <div class="node-title">Project Trainee at Larsen & Toubro</div>
+                        <p>Mumbai &mdash; Gained hands-on exposure to large-scale engineering project management and operations.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="node-date">Undergrad</div>
+                        <div class="node-title">IIT Jodhpur</div>
+                        <p>B.Tech degree, recipient of ₹3 Lakh Scholarship, BAJA SAE automotive coordinator, and Varsity Volleyball player.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="node-date">Foundations</div>
+                        <div class="node-title">JEE Preparation</div>
+                        <p>Kota &mdash; Rigorous technical preparation leading to selection in JEE Advanced '15.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills (6 Total) -->
+            <div class="card">
+                <h2>Skills & Core Domains</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Generative & Agentic AI</h3>
+                        <p>Autonomous AI agents, multi-step LLM workflows, quantitative LLM applications, and intelligent architectures.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Data Science & Analytics</h3>
+                        <p>Statistical modeling, predictive analytics, pattern recognition, and quantitative problem-solving.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Product Strategy & Growth</h3>
+                        <p>User growth loops, 0-to-1 feature roadmapping, scaling conversion funnels, and data-driven execution.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Digital Marketing</h3>
+                        <p>Growth hacking, performance channels, brand positioning, audience targeting, and funnel optimization.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Business Analysis & Strategy</h3>
+                        <p>Market evaluation, competitive mapping, consumer psychology, and strategic messaging.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Leadership & Community</h3>
+                        <p>General Secretary (PGDBA) at IIM Calcutta, BAJA SAE auto coordinator, and festival leadership at IIT Jodhpur.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cities & Footprint -->
+            <div class="card">
+                <h2>Cities & Footprint</h2>
+                <p style="margin-bottom: 1.25rem;">A visual map of the key locations that defined my academic, corporate, and personal evolution.</p>
+                <div class="footprint-grid">
+                    <div class="footprint-card">
+                        <div class="city-name">Chambal (Sheopur)</div>
+                        <div class="city-role">Roots & Early Life</div>
+                        <p>Grounding origins that fostered resilience, curiosity, and adaptability.</p>
+                    </div>
+                    <div class="footprint-card">
+                        <div class="city-name">Kota</div>
+                        <div class="city-role">The Preparation Era</div>
+                        <p>Intensive JEE preparation that honed rigorous discipline and problem-solving speed.</p>
+                    </div>
+                    <div class="footprint-card">
+                        <div class="city-name">Jodhpur</div>
+                        <div class="city-role">IIT Days</div>
+                        <p>B.Tech years marked by automotive engineering, varsity sports, and leadership.</p>
+                    </div>
+                    <div class="footprint-card">
+                        <div class="city-name">Delhi / Gurugram</div>
+                        <div class="city-role">Snapdeal & Corporate PM</div>
+                        <p>Core product management experience scaling e-commerce and growth engines.</p>
+                    </div>
+                    <div class="footprint-card">
+                        <div class="city-name">Kolkata</div>
+                        <div class="city-role">IIM Calcutta</div>
+                        <p>MBA years, elected Batch Lead (General Secretary PGDBA), and strategic management focus.</p>
+                    </div>
+                    <div class="footprint-card">
+                        <div class="city-name">Hyderabad / Gurugram</div>
+                        <div class="city-role">Hedge Fund & Beyond</div>
+                        <p>Building high-precision Gen AI and data science solutions in global quantitative finance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passions & Personal Corner -->
+            <div class="card">
+                <h2>Passions & Personal Corner</h2>
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h3>Economics & Capital Markets</h3>
+                        <p>Analyzing macroeconomic movements, global market dynamics, and systematic capital allocation strategies.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Astrology & Pattern Recognition</h3>
+                        <p>Decoding ancient symbolic frameworks to map structural patterns, cycles, and macro human behavioral trends.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Music & Vocal Performance</h3>
+                        <p>A lifelong creative outlet focused on singing, vocal technique, and rhythm structures as a way to reset.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Culinary Arts</h3>
+                        <p>Approaching cooking as a blend of creative flavor experimentation and structured culinary technique.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: EARLY LIFE -->
+        <div id="early-life" class="tab-content">
+            <div class="card">
+                <h2>Roots, Resiliency, & Small-Town Grit</h2>
+                <div class="story-content">
+                    <p>Before the competitive intensity of Kota, the labs of IIT Jodhpur, or the case discussion rooms of IIM Calcutta, my world was bounded by the quiet contours of <strong>Sheopur</strong>—a modest town in the Chambal region that was granted official district status only after I was born. Growing up with limited formal educational infrastructure, learning wasn't about relying on elite coaching or specialized resources; it was about curiosity, self-drive, and making the most of what was in front of us.</p>
+                    
+                    <p>My early schooling was rooted at <strong>St. Pius</strong>. There was a brief stint at Kendriya Vidyalaya, but after just a few months, I returned to St. Pius where my academic foundation really took shape. One of my earliest milestones came in the 8th grade at the District General Knowledge Quiz Competition. Competing against thousands of students, I won <strong>1st Prize</strong>—a moment that quietly built my confidence and proved that curiosity could take you far regardless of your surroundings.</p>
+                    
+                    <p>Driven by a desire to represent my peers, I threw my hat into the ring for school elections, won, and served as <strong>Headboy</strong>. Beyond books and elections, my world revolved around cricket. Almost every single evening belonged to the pitch. As team captain, I got to lead a great group of players, learning how to handle match situations, keep everyone aligned, and enjoy the game under a bit of pressure.</p>
+                    
+                    <p>The biggest surprise, however, came at the very end of my hometown chapter. When the Class 10 CBSE results were declared, my parents were initially disappointed with my raw marks. I went to sleep that night feeling the weight of that disappointment. The next morning, I was woken up to pure shock: my parents were staring at the morning newspaper, where my name was printed right at the top as the <strong>CBSE District Topper</strong>.</p>
+                    
+                    <p>Sheopur gave me my foundation: the humility of small-town roots, the everyday camaraderie of evening cricket, and the lesson that success often arrives when you least expect it.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: PROJECTS -->
+        <div id="projects" class="tab-content">
+            <div class="card">
+                <h2>Featured Work & Initiatives</h2>
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h3>Enterprise Gen AI Systems</h3>
+                        <p>Building high-precision generative pipelines and intelligent data processing tools within the quantitative finance ecosystem.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Consumer Product Scale</h3>
+                        <p>Drove conversion and user acquisition initiatives across leading Indian consumer platforms in E-commerce and EdTech.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Automotive Engineering</h3>
+                        <p>Designed and built all-terrain vehicles for BAJA SAE at IIT Jodhpur, coordinating engineering teams and fabrication logistics.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Thought Leadership</h3>
+                        <p>Recognized as a LinkedIn Top Voice for regular insights on Product Management, AI trends, and career transitions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: PLACES -->
+        <div id="places" class="tab-content">
+            <div class="card">
+                <h2>Places I've Lived</h2>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <h3>Chambal (Sheopur)</h3>
+                        <p>Where my journey began. Grounding roots and early schooling at St. Pius.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Kota</h3>
+                        <p>The academic pressure test that opened the doors to IIT.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Jodhpur</h3>
+                        <p>Four transformative years of engineering and leadership at IIT Jodhpur.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Delhi / Gurugram</h3>
+                        <p>Building core corporate and product management experience at Snapdeal and e-commerce leaders.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Kolkata</h3>
+                        <p>The vibrant cultural and academic home during my MBA at IIM Calcutta.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Hyderabad / Gurugram</h3>
+                        <p>Current base, tackling cutting-edge AI problems in financial technology.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: HOBBIES -->
+        <div id="hobbies" class="tab-content">
+            <div class="card">
+                <h2>Beyond Work</h2>
+                <div class="grid-2">
+                    <div class="feature-card">
+                        <h3>Economics & Finance</h3>
+                        <p>Fascinated by market dynamics, macroeconomic trends, and capital allocation strategies.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Astrology & Pattern Recognition</h3>
+                        <p>Exploring complex ancient symbolic systems and mapping structural patterns in human events.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Music & Singing</h3>
+                        <p>A lifelong creative outlet for unwinding, vocal performance, and exploring rhythmic structures.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Culinary Arts</h3>
+                        <p>Experimenting with flavor profiles and cooking as a form of structured precision and creative release.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 6: QUOTES -->
+        <div id="quotes" class="tab-content">
+            <div class="card">
+                <h2>Guiding Principles & Mental Models</h2>
+                <div class="quote-card">
+                    <p>"First principles thinking requires you to dig deeper and deeper until you are left with only the foundational truths."</p>
+                    <div class="quote-author">&mdash; Mental Model</div>
+                </div>
+                <div class="quote-card">
+                    <p>"In a world of noise, high-signal pattern recognition is the ultimate competitive advantage."</p>
+                    <div class="quote-author">&mdash; Personal Mantra</div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <footer>
         <p>&copy; 2026 Vineet Singh Chauhan. Built for GitHub Pages.</p>
     </footer>
 
+    <script>
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 </body>
 </html>
