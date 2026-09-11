@@ -418,6 +418,10 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
 }
 
 .cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Adds space between the SVG icon and text */
   white-space: nowrap;
   background-color: #25D366;
   color: #FFFFFF;
@@ -435,6 +439,11 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
   transform: translateY(-2px);
 }
 
+/* Ensures the SVG inherits button text color and stays crisp */
+.whatsapp-icon {
+  display: block;
+  flex-shrink: 0;
+}
 /* Mobile Responsiveness */
 @media (max-width: 600px) {
   .cta-banner {
