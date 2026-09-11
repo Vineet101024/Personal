@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Define tabs and their corresponding content files
     const tabs = [
         { id: 'home', file: 'content/home.html' },
         { id: 'early-life', file: 'content/early-life.html' },
@@ -9,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 'quotes', file: 'content/quotes.html' }
     ];
 
-    // Preload all tabs via fetch
     tabs.forEach(tab => {
         const container = document.getElementById(tab.id);
         if (container) {
@@ -41,7 +39,6 @@ function switchTab(tabId) {
         targetTab.classList.add('active');
     }
     
-    // Highlight correct navigation tab button
     if (event && event.currentTarget) {
         event.currentTarget.classList.add('active');
     }
