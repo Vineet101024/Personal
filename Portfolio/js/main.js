@@ -25,6 +25,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
         }
     });
+
+    // GA4 WhatsApp Click Event Tracking
+    const whatsappBtn = document.getElementById('whatsapp-cta-btn');
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', () => {
+            if (typeof gtag === 'function') {
+                gtag('event', 'click_whatsapp', {
+                    'event_category': 'CTA',
+                    'event_label': 'Bottom Banner WhatsApp DM'
+                });
+            }
+        });
+    }
 });
 
 function switchTab(tabId) {
