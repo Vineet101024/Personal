@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vineet Singh Chauhan - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">Vineet Singh Chauhan</div>
+        <ul class="nav-tabs">
+            <li class="nav-tab active" onclick="switchTab('home')">Home</li>
+            <li class="nav-tab" onclick="switchTab('early-life')">Early Life</li>
+            <li class="nav-tab" onclick="switchTab('projects')">Projects</li>
+            <li class="nav-tab" onclick="switchTab('places')">Places</li>
+            <li class="nav-tab" onclick="switchTab('hobbies')">Hobbies</li>
+            <li class="nav-tab" onclick="switchTab('quotes')">Favorite Quotes</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Content gets dynamically injected here from /content folder -->
+        <div id="home" class="tab-content active"></div>
+        <div id="early-life" class="tab-content"></div>
+        <div id="projects" class="tab-content"></div>
+        <div id="places" class="tab-content"></div>
+        <div id="hobbies" class="tab-content"></div>
+        <div id="quotes" class="tab-content"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Vineet Singh Chauhan. Built for GitHub Pages.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
