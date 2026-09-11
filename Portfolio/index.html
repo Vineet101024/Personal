@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDJF99HDZ7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-LDJF99HDZ7');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vineet Singh Chauhan - Portfolio</title>
@@ -8,37 +18,52 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+    <!-- 
     <nav>
-        <div class="nav-top-row">
-            <div class="nav-logo">Vineet Singh Chauhan</div>
-            <div class="nav-subtitle">Product Manager &bull; GenAI Specialist</div>
-        </div>
-        
-        <!-- Smooth Horizontally Scrollable Top Navigation Bar -->
+        <!-- Horizontally Scrollable Tabs (Only Home active for now) -->
+        <!-- 
+
         <ul class="nav-tabs">
             <li class="nav-tab active" onclick="switchTab('home')">Home</li>
             <li class="nav-tab" onclick="switchTab('early-life')">Early Life</li>
             <li class="nav-tab" onclick="switchTab('projects')">Projects</li>
-            <li class="nav-tab" onclick="switchTab('places')">Places</li>
             <li class="nav-tab" onclick="switchTab('hobbies')">Hobbies</li>
             <li class="nav-tab" onclick="switchTab('quotes')">Quotes</li>
         </ul>
-    </nav>
+        <!-- 
 
+    </nav>
+    -->
+    
     <div class="container">
+        <!-- Home page container (Active) -->
         <div id="home" class="tab-content active"></div>
+
+        <!-- Hidden pages (Commented out for now) -->
+        <!--
         <div id="early-life" class="tab-content"></div>
         <div id="projects" class="tab-content"></div>
-        <div id="places" class="tab-content"></div>
         <div id="hobbies" class="tab-content"></div>
         <div id="quotes" class="tab-content"></div>
+        -->
     </div>
 
     <footer>
-        <p>&copy; 2026 Vineet Singh Chauhan. Built for GitHub Pages.</p>
+        <p>&copy; 2026 Vineet Singh Chauhan.</p>
     </footer>
 
     <script src="js/main.js"></script>
+
+    <div class="cta-banner">
+  <div class="cta-text">
+    Want to talk about something? Or need mentorship? Feel free to reach out—
+  </div>
+  <a href="https://wa.me/vineet_singh_chauhan_?text=Hi%20Vineet,%20I'd%20like%20to%20connect!" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="cta-btn">
+    DM on WhatsApp
+  </a>
+</div>
 </body>
 </html>
