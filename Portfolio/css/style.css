@@ -27,75 +27,89 @@ body {
     background-attachment: fixed;
 }
 
+/* Sticky Top Navigation Bar */
 nav {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(11, 15, 25, 0.95);
+    background: rgba(11, 15, 25, 0.92);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-color);
-    padding: 1rem 1rem 0.75rem;
+    padding: 0.75rem 1rem 0;
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-top-row {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.4rem;
+    width: 100%;
 }
 
 .nav-logo {
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     background: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-align: center;
+    white-space: nowrap;
 }
 
 .nav-subtitle {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-secondary);
-    text-align: center;
-    margin-bottom: 0.4rem;
+    text-align: right;
+    white-space: nowrap;
 }
 
-.nav-tabs-vertical {
+/* Horizontally Scrollable Tabs for Mobile */
+.nav-tabs {
     display: flex;
-    flex-direction: column;
     gap: 0.4rem;
     list-style: none;
+    overflow-x: auto;
     width: 100%;
-    max-width: 600px;
+    padding-bottom: 0.6rem;
+    scrollbar-width: none; /* Hide scrollbar for clean UI on mobile/desktop */
+    -webkit-overflow-scrolling: touch;
 }
 
-.nav-tabs-vertical .nav-tab {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 0.65rem 1rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
+.nav-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-tab {
+    padding: 0.4rem 0.85rem;
     color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
     cursor: pointer;
+    border-radius: 6px;
     transition: all 0.25s ease;
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
 }
 
-.nav-tabs-vertical .nav-tab:hover {
+.nav-tab:hover {
     color: var(--text-primary);
     background: rgba(255, 255, 255, 0.08);
 }
 
-.nav-tabs-vertical .nav-tab.active {
-    background: var(--gradient);
+.nav-tab.active {
     color: #fff;
+    background: var(--gradient);
     border-color: transparent;
+    font-weight: 600;
 }
 
 .container {
     max-width: 700px;
-    margin: 1.5rem auto 3rem;
+    margin: 1.25rem auto 3rem;
     padding: 0 1rem;
 }
 
@@ -332,9 +346,16 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
+/* Tablet & Desktop Enhancements */
 @media (min-width: 768px) {
-    .nav-tabs-vertical {
-        max-width: 700px;
+    .container {
+        max-width: 900px;
+    }
+    .nav-subtitle {
+        font-size: 0.85rem;
+    }
+    .nav-logo {
+        font-size: 1.2rem;
     }
     .skills-grid, .footprint-grid, .grid-2, .grid-3 {
         grid-template-columns: repeat(2, 1fr);
